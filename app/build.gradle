@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.zzz.javatemplate"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //聚合 api
+            buildConfigField("String", "JUHE_NEWS_APPKEY", '"214dc714d14b8eb6341080f3e14bc139"')
+            buildConfigField("String", "JUHE_CONSTELLATION_APPKEY", '"c6b43327281ad3853f6f0fb2ffef41a7"')
+            buildConfigField("String", "JUHE_URL_COLL", '"http://web.juhe.cn:8080/"')
+            buildConfigField("String", "JUHE_URL_NEWS", '"http://v.juhe.cn/"')
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //聚合 api
+            buildConfigField("String", "JUHE_NEWS_APPKEY", '"214dc714d14b8eb6341080f3e14bc139"')
+            buildConfigField("String", "JUHE_CONSTELLATION_APPKEY", '"c6b43327281ad3853f6f0fb2ffef41a7"')
+            buildConfigField("String", "JUHE_URL_COLL", '"http://web.juhe.cn:8080/"')
+            buildConfigField("String", "JUHE_URL_NEWS", '"http://v.juhe.cn/"')
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //SharedPreferences框架
+    implementation 'com.orhanobut:hawk:2.0.1'
+    //线程池框架
+    implementation 'com.geek.thread:thread-pool:1.0.1'
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //Glide图片加载库
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    //OkHttp的打印拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    //Gson converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+}
